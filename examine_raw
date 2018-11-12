@@ -1,0 +1,2 @@
+cd ..
+ds9 -zoom to fit   -scale histequ *e.f* -header

@@ -1,0 +1,10 @@
+#!/usr/bin/python2
+import os
+import re
+l=os.listdir('.')
+for file in l:
+  if '.py' in file:
+    os.rename(file,'.'+file)
+
+
+

@@ -1,0 +1,37 @@
+#! /usr/bin/env python2
+import sys
+from pyraf import iraf
+import os
+import time
+iraf.reset(imtype = 'fts')
+iraf.set(stdimage='imt4096')
+iraf.reset(imextn='fxf:fts,fits,fit')
+
+def run_disp(inputl):
+    j=1
+    iraf.images()
+    time.sleep(2)
+    for (i,image) in enumerate(inputl):
+        #time.sleep(2)
+        iraf.displ(image,(i)%16+1)
+        if i>=j*16-1:
+            axx=raw_input("enter to continue:\n")
+            j+=1
+    
+def imex(inputl):
+    iraf.images()
+    for image in inputl:
+        iraf.imexam(image)
+if __name__ == "__main__":
+    os.chdir('..')
+    os.system('ds9&')
+    inputl1='llist'
+    inputl=[]
+    if 'list' in inputl1:
+        with open(inputl1) as f:
+            for line in f.readlines():
+                inputl.append(line.split('\n')[0])
+    else:
+        inputl=sys.argv[1:]
+    time.sleep(4)
+    run_disp(inputl)

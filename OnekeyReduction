@@ -1,0 +1,25 @@
+#!/usr/bin/python
+
+import os
+print('running rename\n\n')
+os.system('./.renm.py')
+os.system('./.showheads.py >../imhead')
+
+os.system('./.showheads.py ')
+print('making list\n\n')
+os.system('./.mklist.py')
+print('BDF-correcting...\n\n')
+os.system('./.localredpipe.py')
+print('identifying coord\n\n')
+os.system('./.mkcoord.py')
+os.system('./.imalignauto.py')
+f=open('../autocondition','r')
+cond=f.read()
+print('auto coordinates '+cond)
+f.close()
+if cond=='failed':
+    print('trying to generate coordinates')
+    os.system('./.corralign.py')
+    os.system('./.imalignmanual.py')
+os.system('./.combinebdfa.py')
+

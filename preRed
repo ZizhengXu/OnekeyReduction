@@ -1,0 +1,11 @@
+#!/usr/bin/python
+import os
+import re
+
+os.system('./.renm.py')
+os.system('./.showheads.py >../imhead')
+
+os.system('./.showheads.py ')
+print('making list\n\n')
+os.system('./.mklist.py')
+os.system('./lightframeViewer ')
