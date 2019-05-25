@@ -1,4 +1,6 @@
-# OnekeyReduction-release-2.3
+# OnekeyReduction
+current stable version: 2.3
 
-usage: terminal:
+usage: 
+on a Ubuntu machine with IRAF and Python default to Python3, in terminal type:
 ./OnekeyReduction
